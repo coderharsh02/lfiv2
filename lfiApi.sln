@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lfiApi", "lfiApi\lfiApi.csproj", "{1F174B92-5B49-41EC-A348-AA3088A95D62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F174B92-5B49-41EC-A348-AA3088A95D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F174B92-5B49-41EC-A348-AA3088A95D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F174B92-5B49-41EC-A348-AA3088A95D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F174B92-5B49-41EC-A348-AA3088A95D62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CD1E460-B017-41A4-A1A8-C55FE37F7B6F}
+	EndGlobalSection
+EndGlobal

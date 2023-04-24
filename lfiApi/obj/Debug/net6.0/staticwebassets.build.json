@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "apMGX6lzJSXSeYqUVaD6NAekP5cMIdjuNb0pF5Hbc7I=",
+  "Source": "lfiApi",
+  "BasePath": "_content/lfiApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
