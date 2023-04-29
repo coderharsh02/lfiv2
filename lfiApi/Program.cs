@@ -73,6 +73,7 @@ try
     await context.Database.MigrateAsync();
     await context.Database.ExecuteSqlRawAsync("DELETE FROM [Connections]");
     await Seed.SeedUsers(userManager, roleManager);
+    await Seed.SeedDonations(context);
 }
 catch (Exception ex)
 {

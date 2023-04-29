@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/harshshah/Downloads/lfiv2-main/lfiApi/lfiApi.csproj": {}
+    "/Users/harshshah/Desktop/FinalPresentation/lfi-v2/lfiApi/lfiApi.csproj": {}
   },
   "projects": {
-    "/Users/harshshah/Downloads/lfiv2-main/lfiApi/lfiApi.csproj": {
+    "/Users/harshshah/Desktop/FinalPresentation/lfi-v2/lfiApi/lfiApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/harshshah/Downloads/lfiv2-main/lfiApi/lfiApi.csproj",
+        "projectUniqueName": "/Users/harshshah/Desktop/FinalPresentation/lfi-v2/lfiApi/lfiApi.csproj",
         "projectName": "lfiApi",
-        "projectPath": "/Users/harshshah/Downloads/lfiv2-main/lfiApi/lfiApi.csproj",
+        "projectPath": "/Users/harshshah/Desktop/FinalPresentation/lfi-v2/lfiApi/lfiApi.csproj",
         "packagesPath": "/Users/harshshah/.nuget/packages/",
-        "outputPath": "/Users/harshshah/Downloads/lfiv2-main/lfiApi/obj/",
+        "outputPath": "/Users/harshshah/Desktop/FinalPresentation/lfi-v2/lfiApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/harshshah/.nuget/NuGet/NuGet.Config"

@@ -2,7 +2,7 @@
 
 namespace lfiApi.DTOs.Enums
 {
-    public enum EnumCollectorType
+    public enum EnumVolunteerType
     {
         [Display(Name = "Individual")]
         Individual = 1,

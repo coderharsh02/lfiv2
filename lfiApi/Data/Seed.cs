@@ -15,14 +15,14 @@ namespace lfiApi.Data
             await context.SaveChangesAsync();
         }
 
-        public static async Task SeedUsers(UserManager<AppUser> userManager, 
+        public static async Task SeedUsers(UserManager<AppUser> userManager,
             RoleManager<AppRole> roleManager)
         {
             if (await userManager.Users.AnyAsync()) return;
 
             var userData = await File.ReadAllTextAsync("Data/UserSeedData.json");
 
-            var options = new JsonSerializerOptions{PropertyNameCaseInsensitive = true};
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
             var users = JsonSerializer.Deserialize<List<AppUser>>(userData);
 
@@ -53,7 +53,20 @@ namespace lfiApi.Data
             };
 
             await userManager.CreateAsync(admin, "Pa$$w0rd");
-            await userManager.AddToRolesAsync(admin, new[] {"Admin", "Moderator"});
+            await userManager.AddToRolesAsync(admin, new[] { "Admin", "Moderator" });
+        }
+
+        public static async Task SeedDonations(DataContext context)
+        {
+            if (await context.Donations.AnyAsync()) return;
+            var donationData = await File.ReadAllTextAsync("Data/DonationSeedData.json");
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var donations = JsonSerializer.Deserialize<List<Donation>>(donationData);
+            foreach (var donation in donations)
+            {
+                context.Donations.Add(donation);
+            }
+            await context.SaveChangesAsync();
         }
     }
 }

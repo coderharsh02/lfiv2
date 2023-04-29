@@ -42,6 +42,7 @@ namespace lfiApi.Data
                 UserName = user.UserName,
                 PhotoUrl = user.PhotoUrl,
                 City = user.City,
+                Name = user.Name,
                 Id = user.Id
             });
 

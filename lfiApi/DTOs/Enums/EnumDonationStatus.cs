@@ -4,6 +4,9 @@ namespace lfiApi.DTOs.Enums
 {
     public enum EnumDonationStatus
     {
+        [Display(Name = "Expired")]
+        Expired = 0,
+
         [Display(Name = "Available")]
         Available = 1,
 
@@ -14,6 +17,6 @@ namespace lfiApi.DTOs.Enums
         Collected = 3,
 
         [Display(Name = "Donated")]
-        Donated = 4
+        Donated = 4,
     }
 }

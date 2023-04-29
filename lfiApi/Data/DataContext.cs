@@ -20,6 +20,7 @@ namespace lfiApi.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Connection> Connections { get; set; }
+        public DbSet<VolunteerType> VolunteerType { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -62,6 +63,5 @@ namespace lfiApi.Data
                 .WithMany(m => m.MessagesSent)
                 .OnDelete(DeleteBehavior.Restrict);
         }
-        //public DbSet<CollectorType> CollectorType { get; set; }
     }
 }

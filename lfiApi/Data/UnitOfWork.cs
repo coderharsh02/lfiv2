@@ -18,6 +18,7 @@ namespace lfiApi.Data
         public IMessageRepository MessageRepository => new MessageRepository(_context, _mapper);
 
         public ILikesRepository LikesRepository => new LikesRepository(_context);
+        public IDonationRepository DonationRepository => new DonationRepository(_context, UserRepository, _mapper);
 
         public async Task<bool> Complete()
         {

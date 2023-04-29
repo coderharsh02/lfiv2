@@ -5,8 +5,8 @@ namespace lfiApi.Entities
     {
         public string Name { get; set; }
         public string PhotoUrl { get; set; }
-        public string DonorType { get; set; }
-        public string VolunteerType { get; set; }
+        public int DonorType { get; set; }
+        public int VolunteerType { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string City { get; set; }
@@ -20,7 +20,6 @@ namespace lfiApi.Entities
         public List<UserLike> LikedUsers { get; set; }
         public List<Message> MessagesSent { get; set; }
         public List<Message> MessagesReceived { get; set; }
-
         public ICollection<AppUserRole> UserRoles { get; set; }
     }
 }
