@@ -8,11 +8,34 @@
                     <i class="class fa fa-user-circle text-success"></i> Online now
                 </div>
                 <div>
-                    <strong>Location:</strong>
-                    <p>{{member.city}}, {{member.city}}</p>
+                    <strong>Name:</strong>
+                    <p>{{member.name}}</p>
                 </div>
                 <div>
-                    <strong>Age:</strong>
+                    <strong>UserName:</strong>
+                    <p>{{member.userName}}</p>
+                </div>
+                <div [ngSwitch]="member.donorType">
+                    <strong>Donor Type:</strong>
+                    <p *ngSwitchCase="1">Individual</p>
+                    <p *ngSwitchCase="2">Organization</p>
+                    <p *ngSwitchCase="3">Restaurant</p>
+                    <p *ngSwitchCase="4">PartyPlot</p>
+                </div>
+                <div [ngSwitch]="member.volunteerType">
+                    <strong>Volunteer Type:</strong>
+                    <p *ngSwitchCase="1">Individual</p>
+                    <p *ngSwitchCase="2">Organization</p>
+                </div>
+                <div>
+                    <strong>Location:</strong>
+                    <p>{{member.addressLine1}}, <br>
+                    {{member.addressLine2}}, <br>
+                    {{member.city}}, <br>
+                    {{member.pincode}}</p>
+                </div>
+                <div>
+                    <strong>Phone Number:</strong>
                     <p>{{member.phoneNumber}}</p>
                 </div>
                 <div>
@@ -38,13 +61,11 @@
         <tabset class="member-tabset" #memberTabs>
             <tab heading="About {{member.name}}" (selectTab)="onTabActivated($event)" >
                 <h4>Description</h4>
-                <p>{{member.description}}</p>
+                <p>{{member.description ? member.description : "not provided"}}</p>
                 <h4>Looking for</h4>
-                <p>{{member.lifeGoals}}</p>
+                <p>{{member.lifeGoals ? member.lifeGoals : "not provided"}}</p>
             </tab>
-            <tab heading="Photos" (selectTab)="onTabActivated($event)" >
-                <!-- <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery> -->
-            </tab>
+
             <tab heading="Messages" (selectTab)="onTabActivated($event)" >
                 <app-member-messages [username]="member.userName"></app-member-messages>
             </tab>

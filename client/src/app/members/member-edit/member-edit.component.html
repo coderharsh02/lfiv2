@@ -38,28 +38,108 @@
     </div>
 
     <div class="col-8">
-        <tabset class="member-tabset">
-            <tab heading="About {{member.name}}">
-                <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
+        <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
+            <tabset class="member-tabset">
+                <tab heading="Personal Info">
+                    <div class="row align-items-center">
+                        <div class="col-25"><label for="username">Username</label></div>
+                        <div class="col-75">
+                            <input type="email" id="userName" name="userName" [(ngModel)]="member.userName"
+                                placeholder="Your email address.." disabled required />
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-25"><label for="name">Name</label></div>
+                        <div class="col-75">
+                            <input type="text" id="name" name="name" [(ngModel)]="member.name" placeholder="Your Name.."
+                                required />
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-25"><label for="donorType">Donor Type</label></div>
+                        <div class="col-75">
+                            <select id="donorType" name="donorType" [(ngModel)]="member.donorType">
+                                <option value="Individual">Individual</option>
+                                <option value="Party Plot">Party Plot</option>
+                                <option value="Hostel">Hostel</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-25"><label for="volunteerType">Volunteer Type</label></div>
+                        <div class="col-75">
+                            <select id="volunteerType" name="volunteerType" [(ngModel)]="member.volunteerType">
+                                <option value="Individual">Individual</option>
+                                <option value="Organization">Organization</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-25">
+                            <label for="addressLine1">Address Line 1</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="addressLine1" name="addressLine1" [(ngModel)]="member.addressLine1"
+                                placeholder="Your Address Line 1.." required />
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-25">
+                            <label for="addressLine2">Address Line 2</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="addressLine2" name="addressLine2" [(ngModel)]="member.addressLine2"
+                                placeholder="Your Address Line 2.." required />
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-25">
+                            <label for="pincode">Pincode</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="number" id="pincode" name="pincode" [(ngModel)]="member.pincode"
+                                placeholder="Your Pincode.." required min="100000" max="999999" />
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-25">
+                            <label for="city">City</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="city" name="city" [(ngModel)]="member.city" placeholder="Your City.."
+                                required />
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <div class="col-25">
+                            <label for="phoneNumber">Phone Number</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="tel" id="phoneNumber" name="phoneNumber" [(ngModel)]="member.phoneNumber"
+                                placeholder="Your Phone Number.." required />
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <div class="col-25">
+                            <label for="photoUrl">Photo Url <span class="text-danger">(Optional)</span> </label>
+                        </div>
+                        <div class="col-75">
+                            <input type="tel" id="photoUrl" name="photoUrl" [(ngModel)]="member.photoUrl"
+                                placeholder="Your Photo Url.." />
+                        </div>
+                    </div>
+
+                </tab>
+                <tab heading="About {{member.name}}">
                     <h4 class="mt-2">Description</h4>
                     <textarea class="form-control" [(ngModel)]="member.description" name="introduction"
-                        rows="6"></textarea>
-                    <h4 class="mt-2">Life Goals/h4>
-                        <textarea class="form-control" [(ngModel)]="member.lifeGoals" name="lookingFor"
-                            rows="6"></textarea>
-                        <h4 class="mt-2">Location Details: </h4>
-                        <div class="d-flex flex-row align-items-center">
-                            <label for="city">City: </label>
-                            <input type="text" [(ngModel)]="member.city" name="city" class="form-control mx-2">
-                            <label for="country">Country: </label>
-                            <input type="text" [(ngModel)]="member.pincode" name="country" class="form-control mx-2">
-                        </div>
-                    </h4>
-                </form>
-            </tab>
-            <tab heading="Edit Photos">
-                <!-- <app-photo-editor [member]="member"></app-photo-editor> -->
-            </tab>
-        </tabset>
+                        rows="9"></textarea>
+                    <h4 class="mt-2">Life Goals</h4>
+                    <textarea class="form-control" [(ngModel)]="member.lifeGoals" name="lookingFor" rows="9"></textarea>
+                </tab>
+            </tabset>
+        </form>
     </div>
 </div>

@@ -3,29 +3,45 @@
         <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.name}}" class="card-img-top">
         <ul class="list-inline member-icons animate text-center">
             <li class="list-inline-item">
-                <button routerLink="/members/{{member.userName}}" class="btn btn-primary"><i class="fa fa-user"></i></button>
+                <button routerLink="/members/{{member.userName}}" class="btn btn-success"><i class="fa fa-user"></i></button>
             </li>
             <li class="list-inline-item">
-                <button (click)="addLike(member)" class="btn btn-primary"><i class="fa fa-heart"></i></button>
+                <button (click)="addLike(member)" class="btn btn-success"><i class="fa fa-heart"></i></button>
             </li>
             <li class="list-inline-item">
                 <button
                     routerLink="/members/{{member.userName}}" 
                     [queryParams]="{tab: 'Messages'}"
-                    class="btn btn-primary">
+                    class="btn btn-success">
                     <i class="fa fa-envelope"></i>
                 </button>
             </li>
         </ul>
     </div>
     <div class="card-body p-1">
-        <h6 class="card-title text-center mb-1">
-            <span [class.is-online]="(presenceService.onlineUsers$ | async)?.includes(member.userName)">
-                <i class="fa fa-user me-2"></i>
-            </span>
+        <h4 *ngIf="member.name != null" class="card-title text-center mb-1 iconTitle">
+            <fa-icon [icon]="faUser" [class.is-online]="(presenceService.onlineUsers$ | async)?.includes(member.userName)"></fa-icon>
+            <p>{{member.name}}</p>
+        </h4>
+        <h4 *ngIf="member.city != null" class="card-title text-center mb-1 iconTitle">
+            <fa-icon [icon]="faCity"></fa-icon>
+            <p>{{member.city}}</p>
+        </h4>
+        <h4 *ngIf="member.name != null" class="card-title text-center mb-1 iconTitle">
+            <fa-icon [icon]="faDonate"></fa-icon>
+            <!-- <p>No Of Times Donated: {{ member.donations.length }}</p> -->
+            <p>No Of Times Donated: 23</p>
+        </h4>
 
-            {{member.name}}, {{member.phoneNumber}}
-        </h6>
-        <p class="card-text text-muted text-center">{{member.city}}</p>
+        <h4 *ngIf="member.name != null" class="card-title text-center mb-1 iconTitle">
+            <fa-icon [icon]="faDonate"></fa-icon>
+            <!-- <p>No Of Times Collected: {{ member.collections.length }}</p> -->
+            <p>No Of Times Collected: 34</p>
+        </h4>
+
+        <h4 class="card-title text-center mb-1">
+            <fa-icon *ngFor="let numberOfStar of noOfFilledStars;" [icon]="faStar"></fa-icon>
+            <fa-icon *ngFor="let numberOfStar of noOfUnfilledStars;" [icon]="farStar"></fa-icon>
+        </h4>
     </div>
 </div>

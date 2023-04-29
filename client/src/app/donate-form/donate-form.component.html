@@ -1,0 +1,22 @@
+<form #donationForm="ngForm" (ngSubmit)="donateNow()" autocomplete="off">
+    <h2 class="text-center text-primary">Donate Now!</h2>
+    <hr>
+    <div class="row align-items-center">
+        <div class="col-25"> <label for="noOfMeals">Number of people that can be served</label> </div>
+        <div class="col-75"> <input type="number" id="noOfMeals" name="noOfMeals" min="3" max="50"
+                [(ngModel)]="model.noOfMeals" placeholder="Your number of meals.."> </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-25"> <label for="noOfMeals">PickUpTimeFrom </label> </div>
+        <div class="col-75 text-center"> {{model.pickUpTimeFrom | date:'short' }} </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-25"> <label for="noOfMeals">PickUpTimeTo (In Number Of Hours) </label> </div>
+        <div class="col-75"> <input type="number" id="hours" name="hours" min="1" max="10" [(ngModel)]="hour"
+                placeholder="min value 1 and max value 10"> </div>
+    </div>
+    <div class="row align-items-center mt-3" style="text-align: center;">
+        <button class="btn btn-success mb-1" type="submit">Donate</button>
+        <a routerLink="/" class="btn btn-secondary mb-1"> Cancel </a>
+    </div>
+</form>

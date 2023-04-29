@@ -1,25 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AccountService } from '../_services/account.service';
+import { DonationsService } from '../_services/donations.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  registerMode = false;
-  users: any;
-
-  constructor() { }
+  topDonors: any;
+  topCollectors: any;
+  constructor(
+    public accountService: AccountService,
+    private donationService: DonationsService
+  ) {}
 
   ngOnInit(): void {
+    this.loadTopDonorsCollectors();
   }
 
-  registerToggle() {
-    this.registerMode = !this.registerMode;
+  loadTopDonorsCollectors() {
+    this.donationService.getTopDonorCollector().subscribe((response) => {
+      this.topDonors = response.topDonors;
+      this.topCollectors = response.topCollectors;
+    });
   }
-
-  cancelRegisterMode(event: boolean) {
-    this.registerMode = event;
-  } 
-
 }

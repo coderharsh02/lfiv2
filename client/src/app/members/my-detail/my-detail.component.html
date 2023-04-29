@@ -1,0 +1,119 @@
+<div class="row" *ngIf="member">
+    <div class="col-4">
+        <div class="card mb-2">
+            <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.name}}"
+                class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <div class="mb-2" *ngIf="(presenceService.onlineUsers$ | async)?.includes(member.userName)">
+                    <i class="class fa fa-user-circle text-success"></i> Online now
+                </div>
+                <div>
+                    <strong>Name:</strong>
+                    <p>{{member.name}}</p>
+                </div>
+                <div>
+                    <strong>UserName:</strong>
+                    <p>{{member.userName}}</p>
+                </div>
+                <div [ngSwitch]="member.donorType">
+                    <strong>Donor Type:</strong>
+                    <p *ngSwitchCase="1">Individual</p>
+                    <p *ngSwitchCase="2">Organization</p>
+                    <p *ngSwitchCase="3">Restaurant</p>
+                    <p *ngSwitchCase="4">PartyPlot</p>
+                </div>
+                <div [ngSwitch]="member.volunteerType">
+                    <strong>Volunteer Type:</strong>
+                    <p *ngSwitchCase="1">Individual</p>
+                    <p *ngSwitchCase="2">Organization</p>
+                </div>
+                <div>
+                    <strong>Location:</strong>
+                    <p>{{member.addressLine1}}, <br>
+                        {{member.addressLine2}}, <br>
+                        {{member.city}}, <br>
+                        {{member.pincode}}</p>
+                </div>
+                <div>
+                    <strong>Phone Number:</strong>
+                    <p>{{member.phoneNumber}}</p>
+                </div>
+                <div>
+                    <strong>Last active:</strong>
+                    <p>{{member.lastActive | timeago}}</p>
+                </div>
+                <div>
+                    <strong>Member since:</strong>
+                    <p>{{member.memberSince | date: 'dd MMM yyyy'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-8">
+        <tabset class="member-tabset" #memberTabs>
+            <tab heading="About {{member.name}}" (selectTab)="onTabActivated($event)">
+                <h4>Description</h4>
+                <p>{{member.description ? member.description : "not provided"}}</p>
+                <h4>Looking for</h4>
+                <p>{{member.lifeGoals ? member.lifeGoals : "not provided"}}</p>
+            </tab>
+
+            <tab *ngIf="donations" heading="Donations">
+                <div class="tab-content">
+                    <h4>Donations</h4>
+                    <table class="table" *ngIf="donations.length > 0">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">DonationId</th>
+                                <th scope="col">No Of People Served</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">CollectedBy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let donation of donations; let i = index">
+                                <th scope="row"> {{i + 1}} </th>
+                                <td><a class="link" routerLink="/donation/{{donation.donationId}}"
+                                        routerLinkActive="active">{{donation.donationId}}</a></td>
+                                <td>{{donation.noOfMeals}}</td>
+                                <td class="t{{ donation.status }}">{{donation.status}}</td>
+                                <td>{{donation.collectedBy?.name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </tab>
+
+            <tab *ngIf="collections" heading="Collections">
+                <div class="tab-content">
+                    <h4>Collections</h4>
+                    <table class="table" *ngIf="collections.length > 0">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">DonationId</th>
+                                <th scope="col">No Of People Served</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">donatedBy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let donation of collections; let i = index">
+                                <th scope="row"> {{i + 1}} </th>
+                                <td><a class="link" routerLink="/donation/{{donation.donationId}}"
+                                        routerLinkActive="active">{{donation.donationId}}</a></td>
+                                <td>{{donation.noOfMeals}}</td>
+                                <td><button class="btn mb-1n {{ donation.status }}" (click)="eventEmitted(donation)"
+                                        type="button">{{ donation.status }}</button></td>
+                                <td>{{donation.donatedBy?.name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </tab>
+        </tabset>
+    </div>
+</div>
